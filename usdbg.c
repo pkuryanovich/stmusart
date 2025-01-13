@@ -65,7 +65,7 @@ static void MX_USART2_UART_Init(void);
   */
 uint8_t number = 123;
 uint8_t numarray[4];
-uint8_t RxData[20];
+
 
 int main(void)
 {
@@ -100,23 +100,18 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
-       HAL_UART_Transmit(&huart2, numarray, 4, 1000);
-          for(int i=0; i<=10000; i++);
-
   {
-    HAL_UART_Receive(&huart2, RxData, 5, 1000);  
+    HAL_UART_Receive(&huart2, RxData, 5, 1000);
+	  
 	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_5);
-          if (RxData[1] == 1)
-          {
-            sprintf(numarray, "%d\n", number);
-   HAL_UART_Transmit(&huart2, numarray, 4, 1000);
-          }
-          for(int i=0; i<=10000; i++);
+	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 /*sprintf(numarray, "%d\n", number);
    HAL_UART_Transmit(&huart2, numarray, 4, 1000);
    //HAL_Delay(1000);
+   for(int i=0; i<=1000; i++);
     /* USER CODE BEGIN 3 */
+    */
   }
   /* USER CODE END 3 */
 }
